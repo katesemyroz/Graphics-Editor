@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     nonsolidfigure.cpp \
     zigzag.cpp \
     rectangle.cpp \
-    oval.cpp
+    oval.cpp \
+    controller.cpp
 
 HEADERS += \
     point.h \
@@ -33,4 +34,5 @@ HEADERS += \
     nonsolidfigure.h \
     zigzag.h \
     rectangle.h \
-    oval.h
+    oval.h \
+    controller.h
