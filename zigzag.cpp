@@ -77,5 +77,6 @@ void Zigzag::showInfo()
     {
         cout<<"Coordinates of "<<i<<" point: x - "<<this->points[i-1].get_x()<<", y - "<<this->points[i-1].get_y()<<endl;
     }
-    cout<<"Coordinates of end point: x - " << this->endPoint.get_x()<<", y - "<<this->endPoint.get_y()<<endl<<endl;
+    cout<<"Coordinates of end point: x - " << this->endPoint.get_x()<<", y - "<<this->endPoint.get_y()<<endl;
+    cout<<"Figure id is: "<<this->figure_id<<endl<<endl;
 }
