@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
 
     Zigzag e1(0,10,40,10,4);
     e1.showInfo();*/
-    I added Controller class. It can add a figure, search figure by figure id and show information about figures.
     
     Controller c;
     c.menu();
