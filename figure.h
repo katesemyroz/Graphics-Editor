@@ -13,13 +13,10 @@ class Figure
 protected:
      Color colorOfLine;
      QString typeOfLine;
-     static int count_figures;
-     int figure_id;
 public:
     Figure();
     ~Figure();
     virtual void showInfo();
-    int getFigureId();
 };
 
 #endif // FIGURE_H

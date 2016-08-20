@@ -3,7 +3,7 @@
 
 #include "figure.h"
 
-class NonSolidFigure : public Figure
+class NonSolidFigure : protected Figure
 {
 protected:
     QVector <Point> points;

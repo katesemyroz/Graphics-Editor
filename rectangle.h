@@ -7,7 +7,6 @@ class Rectangle : protected SolidFigure
 {
     Point centrePoint, leftBottomPoint, rightTopPoint;
     float height, width;
-    friend class Controller;
 public:
     Rectangle();
     Rectangle(Point LeftTopPoint, Point RightBottomPoint);

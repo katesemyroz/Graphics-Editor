@@ -54,6 +54,5 @@ void Oval::showInfo()
     cout<<"This is oval."<<endl;
     cout<<"Coordinates of left top point: x - " << this->leftTopPoint.get_x()<<", y - "<<this->leftTopPoint.get_y()<<endl;
     cout<<"Coordinates of right bottom point: x - " << this->rightBottomPoint.get_x()<<", y - "<<this->rightBottomPoint.get_y()<<endl;
-    cout<<"Coordinates of centre point: x - " << this->centrePoint.get_x()<<", y - "<<this->centrePoint.get_y()<<endl;
-    cout<<"Figure id is: "<<this->figure_id<<endl<<endl;
+    cout<<"Coordinates of centre point: x - " << this->centrePoint.get_x()<<", y - "<<this->centrePoint.get_y()<<endl<<endl;
 }

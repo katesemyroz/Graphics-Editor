@@ -76,6 +76,5 @@ void Rectangle::showInfo()
     cout<<"Coordinates of left bottom point: x - " << this->leftBottomPoint.get_x()<<", y - "<<this->leftBottomPoint.get_y()<<endl;
     cout<<"Coordinates of centre point: x - " << this->centrePoint.get_x()<<", y - "<<this->centrePoint.get_y()<<endl;
     cout<<"Width of figure is "<<this->width<<endl;
-    cout<<"Height of figure is "<<this->height<<endl;
-    cout<<"Figure id is: "<<this->figure_id<<endl<<endl;
+    cout<<"Height of figure is "<<this->height<<endl<<endl;
 }

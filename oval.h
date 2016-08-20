@@ -7,7 +7,6 @@ class Oval : protected SolidFigure
 {
     Point centrePoint;
     float width, height;
-    friend class Controller;
 public:
     Oval();
     Oval(Point LeftTopPoint, Point RightBottomPoint);
