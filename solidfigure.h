@@ -9,6 +9,7 @@ protected:
     Point leftTopPoint, rightBottomPoint;
     Color colorOfFigure;
 public:
+    bool ifPointIsInsideFigure(Point point);
     SolidFigure();
     ~SolidFigure();
 };

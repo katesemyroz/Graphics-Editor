@@ -9,7 +9,7 @@ class Point
     float x, y;
 public:
     Point();
-    Point(int x, int y);
+    Point(float x, float y);
     ~Point();
 
     float get_x(), get_y();

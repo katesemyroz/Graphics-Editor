@@ -2,6 +2,10 @@
 
 Zigzag::Zigzag()
 {
+    this->startPoint.set_x(0);
+    this->startPoint.set_y(5);
+    this->endPoint.set_x(10);
+    this->endPoint.set_y(5);
     this->stepsNumber = 2;
     this->calculateAllPoints();
 }
@@ -42,28 +46,33 @@ Zigzag::~Zigzag()
 
 //--------------------------------------------------------------------------------
 
-void Zigzag::calculateAllPoints()       //данная функция рассчитана только на горизонтальный зигзаг
+void Zigzag::calculateAllPoints()       //данная функция рассчитана только на горизонтальный зигзаг,
+                                        //координаты y последней точки перед конечной точкой считаются неправильно(должен быть +-, а не просто -)
 {
+    this->points.push_back(this->startPoint);
+
     int numOfSections = this->stepsNumber*2;
     float lengthOfSection = (this->endPoint.get_x() - this->startPoint.get_x())/numOfSections;
-    Point firstPoint;
-    firstPoint.set_x(this->startPoint.get_x() + lengthOfSection);
-    this->points.push_back(firstPoint);
-    Point temp;
+    Point firstPointAfterStartPoint;
+    firstPointAfterStartPoint.set_x(this->startPoint.get_x() + lengthOfSection);
+    firstPointAfterStartPoint.set_y(this->startPoint.get_y() - lengthOfSection);
+    this->points.push_back(firstPointAfterStartPoint);
     for (int i = 1; i < stepsNumber - 1; i++)
     {
-       temp.set_x(firstPoint.get_x() + lengthOfSection*2*i);
+       Point temp;
+       temp.set_x(firstPointAfterStartPoint.get_x() + lengthOfSection*2*i);
        if (i%2 != 0)
-       {
            temp.set_y(this->startPoint.get_y() + lengthOfSection);
-       }
-       else
+       else if (i%2 == 0)
            temp.set_y(this->startPoint.get_y() - lengthOfSection);
        this->points.push_back(temp);
     }
-    Point lastPoint;
-    lastPoint.set_x(this->endPoint.get_x() - lengthOfSection);
-    this->points.push_back(lastPoint);
+    Point lastPointBeforeEndPoint;
+    lastPointBeforeEndPoint.set_x(this->endPoint.get_x() - lengthOfSection);
+    lastPointBeforeEndPoint.set_y(this->startPoint.get_y() + lengthOfSection);
+    this->points.push_back(lastPointBeforeEndPoint);
+
+    this->points.push_back(this->endPoint);
 }
 
 //-------------------------------------------------------------------------------
@@ -72,11 +81,9 @@ void Zigzag::showInfo()
 {
     cout<<"This is zigzag."<<endl;
     cout<<"Number of steps: " << this->stepsNumber<<endl;
-    cout<<"Coordinates of start point: x - " << this->startPoint.get_x()<<", y - "<<this->startPoint.get_y()<<endl;
     for (int i = 1; i <= this->points.size(); i++)
     {
         cout<<"Coordinates of "<<i<<" point: x - "<<this->points[i-1].get_x()<<", y - "<<this->points[i-1].get_y()<<endl;
     }
-    cout<<"Coordinates of end point: x - " << this->endPoint.get_x()<<", y - "<<this->endPoint.get_y()<<endl;
     cout<<"Figure id is: "<<this->figure_id<<endl<<endl;
 }

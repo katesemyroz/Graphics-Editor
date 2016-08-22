@@ -19,17 +19,18 @@ public:
     void menu();
     void addFigure();
 
-    //void deleteFigure();
-    //void deleteAllFigures();
+    void deleteCurrentFigure();
+    void deleteFigure(int serialNumberInVector);
+    void deleteAllFigures();
 
-    Figure* getFigure(int NumberOfFigure);
-    void changeCurrentFigure(int NumberOfFigure);
+    void getFigure(int NumberOfFigure);
+    void getFigure(Point point);
 
     void showCurrentFigureInfo();
     void showFigureInfo(int NumberOfFigure);
     void showAllFiguresInfo();
 
-    void ifPointIsInsideFigure();
+    bool ifPointIsInsideFigure(Point point);
 };
 
 #endif // CONTROLLER_H

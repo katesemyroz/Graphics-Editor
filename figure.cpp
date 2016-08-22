@@ -16,7 +16,10 @@ int Figure::count_figures = 0;
 
 void Figure::showInfo()
 {
+}
 
+bool Figure::ifPointIsInsideFigure(Point point)
+{
 }
 
 int Figure::getFigureId()

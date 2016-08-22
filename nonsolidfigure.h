@@ -8,6 +8,7 @@ class NonSolidFigure : public Figure
 protected:
     QVector <Point> points;
 public:
+    bool ifPointIsInsideFigure(Point point);
     NonSolidFigure();
     ~NonSolidFigure();
 };

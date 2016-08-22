@@ -19,6 +19,7 @@ public:
     Figure();
     ~Figure();
     virtual void showInfo();
+    virtual bool ifPointIsInsideFigure(Point point);
     int getFigureId();
 };
 

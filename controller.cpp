@@ -27,6 +27,7 @@ void Controller::addFigure()
         }
         case 3:
         {
+        p = new Zigzag;
             break;
         }
         default:
@@ -38,42 +39,77 @@ void Controller::addFigure()
     all_figures.push_back(p);
 }
 
-Figure* Controller::getFigure(int FigureId)
+void Controller::deleteCurrentFigure()
 {
-    Figure *p;
-    bool found = false;
+    int currentFigureId = currentFigure->getFigureId();
     for (int a = 0; a < all_figures.size(); a++)
     {
-        p = all_figures[a];
-        if (p->getFigureId() == FigureId)
+        if (all_figures[a]->getFigureId() == currentFigureId)
         {
-            found = true;
+            all_figures[a]->~Figure();
+            all_figures.erase(all_figures.begin() + a);
             break;
         }
     }
-    if (!found)
-    {
-        cout<<"There is no figure with id "<<FigureId<<endl;
-        p = NULL;
-    }
-    return p;
+    currentFigure = *(all_figures.end() - 1);
 }
 
-void Controller::changeCurrentFigure(int FigureId)
+void Controller::deleteFigure(int serialNumberInVector)
 {
-    Figure *p = getFigure(FigureId);
-    currentFigure = p;
+    if (&currentFigure == &all_figures[serialNumberInVector - 1])
+        currentFigure = *(all_figures.end() - 1);
+    all_figures[serialNumberInVector - 1]->~Figure();
+    all_figures.erase(all_figures.begin() + serialNumberInVector - 1);
+}
+
+void Controller::deleteAllFigures()
+{
+    int numberOfFigures = all_figures.size();
+    if (numberOfFigures > 0)
+    {
+        for (int i = numberOfFigures - 1; i >= 0; i--)
+        {
+            all_figures[i]->~Figure();
+        }
+        all_figures.clear();
+    }
+    else
+        cout<<"List of figures is empty\n";
+}
+
+void Controller::getFigure(int FigureId)
+{
+    for (int a = 0; a < all_figures.size(); a++)
+    {
+        if (all_figures[a]->getFigureId() == FigureId)
+        {
+            currentFigure = all_figures[a];
+            break;
+        }
+    }
+}
+
+void Controller::getFigure(Point point)
+{
+    for (int i = 0; i < this->all_figures.size(); i++)
+    {
+        if (all_figures[i]->ifPointIsInsideFigure(point))
+        {
+            currentFigure = all_figures[i];
+            break;
+        }
+    }
 }
 
 void Controller::showCurrentFigureInfo()
 {
-    this->currentFigure->showInfo();
+    currentFigure->showInfo();
 }
 
 void Controller::showFigureInfo(int FigureId)
 {
-    Figure *p = getFigure(FigureId);
-    p->showInfo();
+    getFigure(FigureId);
+    currentFigure->showInfo();
 }
 
 void Controller::showAllFiguresInfo()
@@ -82,6 +118,11 @@ void Controller::showAllFiguresInfo()
     {
         all_figures[a]->showInfo();
     }
+}
+
+bool Controller::ifPointIsInsideFigure(Point point)
+{
+    return currentFigure->ifPointIsInsideFigure(point);
 }
 
 void Controller::menu()
